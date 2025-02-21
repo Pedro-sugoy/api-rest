@@ -3,6 +3,9 @@ package br.com.fiap.api_rest.service;
 import br.com.fiap.api_rest.dto.ClienteRequest;
 import br.com.fiap.api_rest.dto.ClienteResponse;
 import br.com.fiap.api_rest.model.Cliente;
+import jakarta.validation.constraints.Null;
+import org.springframework.beans.BeanUtils;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,7 +14,14 @@ import java.util.List;
 @Service
 public class ClienteService {
     public Cliente requestToCliente(ClienteRequest clienterequest){
-        return new Cliente(null, clienterequest.getNome(), clienterequest.getIdade());
+        return new Cliente(null,
+                clienterequest.getNome(),
+                clienterequest.getIdade(),
+                clienterequest.getSenha(),
+                clienterequest.getEmail(),
+                clienterequest.getCpf(),
+                clienterequest.getCategoria());
+
     }
 
     public ClienteResponse clienteToResponse(Cliente cliente){
