@@ -1,5 +1,7 @@
 package br.com.fiap.api_rest.dto;
 
-public record ClienteResponse (Long id, String nome){
+import org.springframework.hateoas.Link;
+
+public record ClienteResponse (Long id, String nome, Link link){
 
 }
