@@ -62,4 +62,5 @@ public class ClienteService {
         public Page<ClienteResponse> findAll(Pageable pegeable){
             return clienteRepository.findAll(pegeable).map(cliente -> clienteToResponse(cliente, true));
     }
+
 }
