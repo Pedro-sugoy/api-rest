@@ -22,6 +22,12 @@ public class Cliente {
     private String senha;
     private String cpf;
     private Categoria categoria;
+    private Data DataNascimento;
+    private boolean via;
+
+    public Cliente(Object o, String nome, int idade, String senha, String email, String cpf, Categoria categoria) {
+    }
+
 
     public Long getId() {
         return id;
@@ -77,5 +83,21 @@ public class Cliente {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public Data getDataNascimento() {
+        return DataNascimento;
+    }
+
+    public void setDataNascimento(Data dataNascimento) {
+        DataNascimento = dataNascimento;
+    }
+
+    public boolean isVia() {
+        return via;
+    }
+
+    public void setVia(boolean via) {
+        this.via = via;
     }
 }
