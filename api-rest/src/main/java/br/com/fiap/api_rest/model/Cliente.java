@@ -1,12 +1,11 @@
 package br.com.fiap.api_rest.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -21,9 +20,14 @@ public class Cliente {
     private String email;
     private String senha;
     private String cpf;
-    private Categoria categoria;
-    private Data DataNascimento;
     private boolean via;
+    @OneToOne
+    @JoinColumn(name = "id_filial")
+    private Filial filial;
+    @ManyToMany
+    @JoinTable(name = "cliente_grupo", joinColumns = @JoinColumn(name = "id_grupo"),
+    inverseJoinColumns = @JoinColumn(name = "id_cliente", referencedColumnName = "id"))
+    private List<Grupo> grupos;
 
     public Cliente(Object o, String nome, int idade, String senha, String email, String cpf, Categoria categoria) {
     }
@@ -77,27 +81,4 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
     }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
-    public Data getDataNascimento() {
-        return DataNascimento;
-    }
-
-    public void setDataNascimento(Data dataNascimento) {
-        DataNascimento = dataNascimento;
-    }
-
-    public boolean isVia() {
-        return via;
-    }
-
-    public void setVia(boolean via) {
-        this.via = via;
-    }
-}
